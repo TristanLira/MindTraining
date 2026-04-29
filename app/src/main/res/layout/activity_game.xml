@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="#6BCE5B"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text="Tiempo restante:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+
+            <TextView
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:id="@+id/timeLeftText"
+                android:text="00:00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:background="#5978D5"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text="Puntaje:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:id="@+id/scoreText"
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:background="#D56767"
+        android:textColor="#FFFFFF"
+        android:padding="10dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:id="@+id/operationText"
+        android:text="0 + 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"/>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:useDefaultMargins="true">
+
+        <Button
+            android:id="@+id/opt0"
+            android:text="0"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:background="@color/cardview_light_background"
+            />
+
+        <Button
+            android:id="@+id/opt1"
+            android:text="0"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:background="@color/cardview_light_background"
+            />
+
+        <Button
+            android:id="@+id/opt2"
+            android:text="0"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:background="@color/cardview_light_background"
+            />
+
+        <Button
+            android:id="@+id/opt3"
+            android:text="0"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:background="@color/cardview_light_background"
+            />
+
+
+    </GridLayout>
+
+</LinearLayout>
