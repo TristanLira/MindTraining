@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -126,44 +127,53 @@ class GameActivity : AppCompatActivity() {
         //primero genera el arreglo con objetos predeterminados, después los asigna en el when
         val operations = Array(4) { Operation(0, 0, '+') }
 
-        when(selectedLevel) {
+        var a: Int
+        var b: Int
+        var operators: Array<Char>
+
+        //genera los rangos y posibles operadores según la dificultad
+        when (selectedLevel) {
             GameLevel.EASY -> {
-                for (i in 0..3) {
-                    val n1: Int = (0..10).random()
-                    val n2: Int = (0..10).random()
-                    val operator: Char = arrayOf('+', '-').random()
-                    operations[i] = Operation(n1, n2, operator)
-                }
+                a = 0; b = 10; operators = arrayOf('+', '-')
             }
 
             GameLevel.MEDIUM -> {
-                for (i in 0..3) {
-                    val n1: Int = (0..20).random()
-                    val n2: Int = (0..20).random()
-                    val operator: Char = arrayOf('+', '-', '*').random()
-                    operations[i] = Operation(n1, n2, operator)
-                }
+                a = 0; b = 20; operators = arrayOf('+', '-', '*')
             }
 
             GameLevel.HARD -> {
-                for (i in 0..3) {
-                    val n1: Int = (1..50).random()
-                    val n2: Int = (1..50).random()
-                    val operator: Char = arrayOf('+', '-', '*', '/').random()
-                    operations[i] = Operation(n1, n2, operator)
-                }
+                a = 1; b = 50; operators = arrayOf('+', '-', '*', '/')
             }
         }
 
-        val correctOpt = (0 until operations.size).random() //posición aleatoria en el array
+        for (i in 0 until operations.size) {
+            operations[i] = getOperationObj(a, b, operators)
+        }
+
+        val correctOpt = (0 until operations.size).random()
+        val answer = operations[correctOpt].result()
         this.correctOpt = correctOpt
 
-        //agrega la operación y resultados al
+        //valida que ninguna operación tenga un resultado repetido
+        for (i in 0 until operations.size) {
+            if (i == correctOpt) continue
+
+            while(operations[i].result() == answer) {
+                operations[i] = getOperationObj(a, b, operators)
+            }
+        }
+
         operationText.text = operations[correctOpt].toString()
         opt0.text = operations[0].result().toString()
         opt1.text = operations[1].result().toString()
         opt2.text = operations[2].result().toString()
         opt3.text = operations[3].result().toString()
+    }
+
+    private fun getOperationObj(a: Int, b: Int, operators: Array<Char>): Operation {
+        val n1: Int = (a..b).random()
+        val n2: Int = (a..b).random()
+        return Operation(n1, n2, operators.random())
     }
 
     private fun validateAnswer(answer: Int) {
